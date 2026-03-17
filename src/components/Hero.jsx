@@ -46,11 +46,7 @@ export default function Hero(){
         />
 
         <Typography sx={{maxWidth:520, mt:3, color: "rgba(255,255,255,0.8)", lineHeight: 1.6}}>
-          Passionate web developer building modern, scalable, user-friendly applications. 
-          I specialize in React, Node.js, and creating seamless digital experiences 
-          that combine cutting-edge technology with intuitive design. From responsive 
-          front-end interfaces to robust back-end systems, I deliver solutions that 
-          perform flawlessly across all devices and exceed user expectations.
+         Passionate software developer building modern, scalable, and user-focused applications. I specialize in React, Node.js, Python, and FastAPI, creating seamless digital experiences that combine responsive interfaces, robust backend systems, and intelligent data-driven workflows. From performant front-end architecture to API integration and AI-assisted solutions, I focus on delivering reliable products that scale across devices and real-world use cases.
         </Typography>
       </motion.div>
 

@@ -72,7 +72,7 @@ export default function Resume() {
                 fontSize: { xs: "1.1rem", md: "1.25rem" }
               }}
             >
-              Frontend Developer – Praise Array
+              Software Developer – Praise Array
             </Typography>
             <Typography 
               sx={{ 
@@ -91,7 +91,7 @@ export default function Resume() {
                 fontSize: { xs: "0.9rem", md: "1rem" }
               }}
             >
-              Built modern UIs using React.js, enhanced app performance, and collaborated with backend teams to integrate APIs.
+             Developed scalable React.js modules, integrated backend APIs, and contributed to AI-assisted features involving LLM-based data processing and intelligent workflow integration.
             </Typography>
           </Box>
         </Box>
