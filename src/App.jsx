@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import DynamicFavicon from "./components/DynamicFavicon";
+import Testimonials from "./components/Testimonials";
 
 export default function App() {
   return (
@@ -40,6 +41,7 @@ export default function App() {
         <About />
         <Resume />
         <Projects />
+        <Testimonials />
         <Contact />
       </Container>
       <Footer />
