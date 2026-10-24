@@ -1,46 +1,11 @@
 # Aditya Portfolio
 
-The portfolio is a static Vite frontend deployed on Vercel. Shared client reviews are stored in Supabase Postgres. New reviews are submitted through a Supabase Edge Function, rate-limited, and kept pending until approved. No custom Node server or CAPTCHA provider is required.
+The portfolio is a static Vite frontend. Reviews are stored in the current browser's local storage only. They are not uploaded, backed up, sent to the site owner, or shared with other visitors. Clearing the browser's site data removes them.
 
-## One-time setup
+## Run and deploy
 
-1. Create a Supabase project.
-2. Apply `supabase/migrations/202610240001_testimonials.sql` to the Supabase project using the Dashboard SQL Editor or Supabase CLI.
-3. Add these **public** frontend values to Vercel → Project Settings → Environment Variables. Also put them in a local `.env.local` file when developing:
+Run `npm install` and `npm run dev` for local development. Run `npm run build` to build the static site. The `dist` directory can be deployed to Vercel or another static host; no backend, database, server secrets, or Supabase setup is needed.
 
-   | Variable | Value |
-   | --- | --- |
-   | `VITE_SUPABASE_URL` | Supabase project URL |
-   | `VITE_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable/anon key (never a service-role key) |
+## Review storage limitation
 
-4. Set this **server-side Edge Function secret** in Supabase → Edge Functions → Secrets:
-
-   | Secret | Value |
-   | --- | --- |
-   | `ALLOWED_ORIGINS` | Exact origins, comma-separated; for example `https://aditya-portfolio-website-five.vercel.app,http://localhost:5173` |
-
-   Supabase provides `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` automatically to hosted Edge Functions. Never add any secret/service-role value to Vercel's `VITE_*` variables or frontend code.
-5. Deploy `submit-review` to Supabase from this repository:
-
-   ```powershell
-   supabase login
-   supabase link --project-ref YOUR_PROJECT_REF
-   supabase functions deploy submit-review
-   ```
-
-6. Redeploy the Vercel frontend after setting its environment variables. Subsequent frontend-only changes deploy through the existing Vercel Git integration. Database migrations and Edge Function changes are deployed separately to Supabase; no application server needs to be hosted or maintained.
-
-## Review moderation
-
-Visitor submissions are validated and limited to five per IP address per hour by Supabase. They are written with `status = pending`. RLS allows visitors to read approved reviews only and blocks direct visitor writes. In Supabase Dashboard → Table Editor → `testimonials`, approve a review by setting its status to `approved`, or hide it with `rejected`. Approved reviews appear on the site after reload.
-
-## Local development
-
-Run `npm install`, set the public values in `.env.local`, then run `npm run dev`. Add the Vite development origin to the Supabase `ALLOWED_ORIGINS` secret. Do not put private keys in `.env.local` variables prefixed with `VITE_`.
-
-## Verify before launch
-
-- Submit a valid review and confirm a pending row appears in Supabase but is not publicly readable.
-- Approve it in the Dashboard, reload the site, and confirm it appears to visitors.
-- Test invalid submissions, the per-IP limit, mobile form scrolling, keyboard navigation, and network errors.
-- If submission is unavailable, check the Vercel frontend variables, deployed function, Supabase function secret, and exact allowed origin.
+Each browser has its own separate review list. A review saved on one device or browser cannot appear for other visitors. Public/shared reviews require a shared database and a backend or hosted API; browser local storage cannot provide that.

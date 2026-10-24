@@ -1,30 +1,70 @@
-const url = import.meta.env.VITE_SUPABASE_URL?.replace(/\/$/, "");
-const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
-export const reviewsConfigured = Boolean(url && key);
-export const submissionsConfigured = reviewsConfigured;
+const storageKey = "aditya-portfolio-testimonials";
+const pageSize = 12;
+
+function readReviews() {
+  let stored;
+  try {
+    stored = window.localStorage.getItem(storageKey);
+  } catch {
+    throw new Error("This browser does not allow access to local storage. Enable site storage and try again.");
+  }
+
+  if (stored === null) return [];
+
+  let reviews;
+  try {
+    reviews = JSON.parse(stored);
+  } catch {
+    throw new Error("Saved reviews could not be read. Clear this site's review storage and try again.");
+  }
+  if (!Array.isArray(reviews) || reviews.some((review) => (
+    !review
+    || typeof review.id !== "string"
+    || typeof review.client_name !== "string"
+    || typeof review.company_role !== "string"
+    || typeof review.message !== "string"
+    || !Number.isInteger(review.rating)
+    || review.rating < 1
+    || review.rating > 5
+    || typeof review.created_at !== "string"
+  ))) {
+    throw new Error("Saved reviews have an invalid format. Clear this site's review storage and try again.");
+  }
+
+  return reviews.sort((first, second) => second.created_at.localeCompare(first.created_at));
+}
+
+function validateReview(review) {
+  const client_name = review.client_name.trim();
+  const company_role = review.company_role.trim();
+  const message = review.message.trim();
+  if (client_name.length < 2 || client_name.length > 80
+    || company_role.length < 2 || company_role.length > 120
+    || message.length < 20 || message.length > 2000
+    || !Number.isInteger(review.rating) || review.rating < 1 || review.rating > 5) {
+    throw new Error("Enter a valid name, company / role, rating, and review before saving.");
+  }
+  return { client_name, company_role, message, rating: review.rating };
+}
 
 export async function fetchReviews(signal, offset = 0) {
-  if (!reviewsConfigured) throw new Error("Reviews are not configured.");
+  if (signal.aborted) throw signal.reason;
   if (!Number.isInteger(offset) || offset < 0) throw new Error("Review page is invalid.");
-  const response = await fetch(`${url}/rest/v1/testimonials?select=id,client_name,company_role,rating,message,created_at&status=eq.approved&order=created_at.desc,id.desc&limit=12&offset=${offset}`, {
-    headers: { apikey: key }, signal: AbortSignal.any([signal, AbortSignal.timeout(15000)]),
-  });
-  if (!response.ok) throw new Error("Reviews could not be loaded. Please try again.");
-  const reviews = await response.json();
-  if (!Array.isArray(reviews)) throw new Error("The review service returned an invalid response.");
-  return reviews;
+  return readReviews().slice(offset, offset + pageSize);
 }
 
 export async function submitReview(review) {
-  if (!submissionsConfigured) throw new Error("Review submissions are not configured yet.");
-  const response = await fetch(`${url}/functions/v1/submit-review`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json", apikey: key },
-    body: JSON.stringify(review),
-    signal: AbortSignal.timeout(20000),
-  });
-  if (!response.ok) {
-    const body = await response.json().catch(() => ({}));
-    throw new Error(body.error || "Your review could not be submitted. Please try again.");
+  const cleaned = validateReview(review);
+  const savedReview = {
+    ...cleaned,
+    id: globalThis.crypto?.randomUUID?.() ?? `review-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    created_at: new Date().toISOString(),
+  };
+  const reviews = readReviews();
+
+  try {
+    window.localStorage.setItem(storageKey, JSON.stringify([savedReview, ...reviews]));
+  } catch {
+    throw new Error("Your review could not be saved. Browser storage may be disabled or full.");
   }
 }
