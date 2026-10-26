@@ -25,28 +25,38 @@ export default function Testimonials() {
   const [submitError, setSubmitError] = useState("");
   const [success, setSuccess] = useState(false);
   const inFlight = useRef(false);
+  const visibleLimit = useRef(12);
 
   useEffect(() => {
     const controller = new AbortController();
-    fetchReviews(controller.signal).then((data) => {
-      setReviews(data); setHasMore(data.length === 12); setLoadError("");
+    fetchReviews(controller.signal, 0, visibleLimit.current).then((data) => {
+      if (controller.signal.aborted) return;
+      setReviews(data); setHasMore(data.length === visibleLimit.current); setLoadError("");
     }).catch((error) => { if (!controller.signal.aborted) setLoadError(error.message); })
       .finally(() => { if (!controller.signal.aborted) setLoading(false); });
-    const handleStorage = (event) => {
-      if (event.key === "aditya-portfolio-testimonials") setReload((value) => value + 1);
-    };
-    window.addEventListener("storage", handleStorage);
-    return () => {
-      controller.abort();
-      window.removeEventListener("storage", handleStorage);
-    };
+    return () => controller.abort();
   }, [reload]);
+
+  useEffect(() => {
+    const refresh = () => {
+      if (document.visibilityState === "visible" && !inFlight.current) {
+        setReload((value) => value + 1);
+      }
+    };
+    const timer = window.setInterval(refresh, 30000);
+    window.addEventListener("focus", refresh);
+    return () => {
+      window.clearInterval(timer);
+      window.removeEventListener("focus", refresh);
+    };
+  }, []);
 
   async function loadMore() {
     setLoading(true); setLoadError("");
     try {
       const data = await fetchReviews(new AbortController().signal, reviews.length);
       setReviews((previous) => [...new Map([...previous, ...data].map((review) => [review.id, review])).values()]);
+      visibleLimit.current = Math.max(12, Math.ceil((reviews.length + data.length) / 12) * 12);
       setHasMore(data.length === 12);
     } catch (error) { setLoadError(error.message); }
     finally { setLoading(false); }
@@ -81,7 +91,6 @@ export default function Testimonials() {
         <Typography color="text.secondary" sx={{ maxWidth: 520 }}>Thoughts from the people I’ve worked with. Have we built something together? I’d love to hear about your experience.</Typography>
         <Button variant="outlined" startIcon={<RateReviewOutlinedIcon />} onClick={() => { setSuccess(false); setSubmitError(""); setErrors({}); setOpen(true); }} sx={{ px: 3, py: 1.25 }}>Add a Review</Button>
       </Stack>
-      <Alert severity="info" sx={{ mb: 3 }}>Reviews are saved only in this browser. They are not sent to the site owner or shared with other visitors, and are removed if this browser’s site data is cleared.</Alert>
       {loadError && <Alert severity="error" sx={{ mb: 3 }} action={<Button color="inherit" onClick={() => { if (reviews.length) loadMore(); else { setLoading(true); setReload((value) => value + 1); } }} disabled={loading}>Retry</Button>}>{loadError}</Alert>}
       <Box aria-busy={loading} sx={{ display: "grid", gridTemplateColumns: { xs: "1fr", sm: "repeat(2, minmax(0, 1fr))", lg: "repeat(3, minmax(0, 1fr))" }, gap: 3 }}>
         {reviews.map((review) => <Card key={review.id} component="article" sx={{ ...glass, display: "flex", flexDirection: "column", transition: "transform .25s, box-shadow .25s", "&:hover": { transform: "translateY(-5px)", boxShadow: "0 16px 40px #00e5ff18" }, "@media (prefers-reduced-motion: reduce)": { transition: "none", "&:hover": { transform: "none" } } }}>
@@ -91,18 +100,18 @@ export default function Testimonials() {
         </Card>)}
         {loading && [0, 1, 2].map((item) => <Box key={item} sx={glass} role="status" aria-label="Loading reviews"><Skeleton width="45%" /><Skeleton height={100} /><Skeleton width="65%" /></Box>)}
       </Box>
-      {!loading && !loadError && reviews.length === 0 && <Box sx={{ ...glass, textAlign: "center", py: 6 }}><FormatQuoteIcon color="primary" sx={{ fontSize: 42, mb: 1 }} /><Typography variant="h6">Every collaboration has a story</Typography><Typography color="text.secondary" sx={{ mt: 1 }}>No reviews have been saved in this browser yet.</Typography></Box>}
+      {!loading && !loadError && reviews.length === 0 && <Box sx={{ ...glass, textAlign: "center", py: 6 }}><FormatQuoteIcon color="primary" sx={{ fontSize: 42, mb: 1 }} /><Typography variant="h6">Every collaboration has a story</Typography><Typography color="text.secondary" sx={{ mt: 1 }}>Be the first to share your experience.</Typography></Box>}
       {hasMore && <Box sx={{ textAlign: "center", mt: 3 }}><Button onClick={loadMore} disabled={loading}>Load more reviews</Button></Box>}
       <Dialog open={open} onClose={close} fullWidth maxWidth="sm" aria-labelledby="review-dialog-title" slotProps={{ paper: { sx: { bgcolor: "#101b29", backgroundImage: "none", border: "1px solid #00e5ff30", borderRadius: 4 } } }}>
         <DialogTitle id="review-dialog-title" sx={{ pr: 7 }}>Share your experience<IconButton aria-label="Close review form" disabled={sending} onClick={close} sx={{ position: "absolute", top: 12, right: 12 }}><CloseIcon /></IconButton></DialogTitle>
-        {success ? <><DialogContent><Alert severity="success" role="status">Your review was saved in this browser only. It is not sent to the site owner or visible to other visitors.</Alert></DialogContent><DialogActions><Button onClick={close}>Done</Button></DialogActions></> : <Box component="form" onSubmit={handleSubmit} noValidate>
+        {success ? <><DialogContent><Alert severity="success" role="status">Thank you! Your review has been published and is visible to all visitors.</Alert></DialogContent><DialogActions><Button onClick={close}>Done</Button></DialogActions></> : <Box component="form" onSubmit={handleSubmit} noValidate>
           <DialogContent><Stack spacing={2.5}>
-            <Typography variant="body2" color="text.secondary">This review is stored only in this browser. It will not be sent to the site owner or published for other visitors. Please avoid sharing private information.</Typography>
+            <Typography variant="body2" color="text.secondary">Your name, company / role, rating, and review will be published on this website. Please avoid sharing private information.</Typography>
             {submitError && <Alert severity="error">{submitError}</Alert>}
             {[['client_name', 'Client name', 80], ['company_role', 'Company / role', 120], ['message', 'Your review', 2000]].map(([name, label, maxLength]) => <TextField key={name} name={name} label={label} required fullWidth autoFocus={name === 'client_name'} disabled={sending} value={form[name]} onChange={(event) => setForm((previous) => ({ ...previous, [name]: event.target.value }))} error={Boolean(errors[name])} helperText={errors[name] || (name === 'message' ? `${form.message.length}/2000 · Minimum 20 characters` : undefined)} multiline={name === 'message'} minRows={name === 'message' ? 4 : undefined} slotProps={{ htmlInput: { maxLength } }} />)}
             <Box><Typography id="review-rating-label" component="p" sx={{ mb: 1 }}>Star rating *</Typography><Rating name="review-rating" value={form.rating} onChange={(_, value) => setForm((previous) => ({ ...previous, rating: value || 0 }))} disabled={sending} size="large" aria-labelledby="review-rating-label" />{errors.rating && <Typography color="error" variant="caption" display="block" role="alert">{errors.rating}</Typography>}</Box>
           </Stack></DialogContent>
-          <DialogActions sx={{ px: 3, pb: 3, flexWrap: "wrap", gap: 1 }}><Button disabled={sending} onClick={close}>Cancel</Button><Button type="submit" variant="contained" disabled={sending} startIcon={sending ? <CircularProgress size={16} color="inherit" /> : null}>{sending ? "Saving…" : "Save in this browser"}</Button></DialogActions>
+          <DialogActions sx={{ px: 3, pb: 3, flexWrap: "wrap", gap: 1 }}><Button disabled={sending} onClick={close}>Cancel</Button><Button type="submit" variant="contained" disabled={sending} startIcon={sending ? <CircularProgress size={16} color="inherit" /> : null}>{sending ? "Saving…" : "Publish review"}</Button></DialogActions>
         </Box>}
       </Dialog>
     </Container>
