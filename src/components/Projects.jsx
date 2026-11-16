@@ -3,7 +3,6 @@ import {
   Card,
   CardContent,
   Typography,
-  Grid,
   Container,
   Button,
   Box,
@@ -12,7 +11,6 @@ import {
 import { useTheme } from "@mui/material/styles";
 import LaunchIcon from "@mui/icons-material/Launch";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import DownloadIcon from "@mui/icons-material/Download";
 
 export default function Projects() {
   const theme = useTheme();
@@ -88,9 +86,9 @@ export default function Projects() {
         Featured Projects
       </Typography>
 
-      <Grid container spacing={4}>
+      <Box className="additional-project-grid" sx={{ display: "grid", gridTemplateColumns: { xs: "minmax(0, 1fr)", md: "repeat(3, minmax(0, 1fr))" }, gap: 3 }}>
         {projects.map((project, i) => (
-          <Grid item xs={12} md={4} key={i}>
+          <Box key={project.title} sx={{ minWidth: 0 }}>
             <Card sx={glass}>
               <CardContent
                 sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}
@@ -138,7 +136,7 @@ export default function Projects() {
                   ))}
                 </Box>
 
-                <Box sx={{ display: "flex", gap: 1 }}>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
                   <Button
                     size="small"
                     startIcon={<LaunchIcon />}
@@ -148,7 +146,7 @@ export default function Projects() {
                         ? "https://dev-code-ide-client.vercel.app/"
                         : i === 2
                           ? "https://space-shooter-game-pi.vercel.app/"
-                          : "#"
+                          : undefined
                     }
                     target={i === 1 || i === 2 ? "_blank" : "_self"}
                     rel={i === 1 || i === 2 ? "noopener noreferrer" : ""}
@@ -181,7 +179,7 @@ export default function Projects() {
                         ? "https://github.com/Aditya8766/DevCodeIDEClient"
                         : i === 2
                           ? "https://github.com/Aditya8766/SpaceShooterGame"
-                          : "#"
+                          : undefined
                     }
                     target={i === 1 || i === 2 ? "_blank" : "_self"}
                     rel={i === 1 || i === 2 ? "noopener noreferrer" : ""}
@@ -211,9 +209,9 @@ export default function Projects() {
                 </Box>
               </CardContent>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
+      </Box>
 
       <Box sx={{ textAlign: "center", mt: 6 }}>
         <Typography

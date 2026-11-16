@@ -1,0 +1,11 @@
+﻿import { useState } from 'react';
+const clusters = [
+  { name: 'Frontend', symbol: '⌘', label: 'Interfaces people enjoy using.', tech: ['React', 'JavaScript', 'Material-UI', 'Three.js', 'CodeMirror'], note: 'Responsive front-end interfaces, reusable UI architecture, and efficient state handling.' },
+  { name: 'Backend', symbol: '⌥', label: 'The systems behind the experience.', tech: ['Node.js', 'Python', 'FastAPI', 'API integration'], note: 'Backend API development, database integration, and clean service communication between systems.' },
+  { name: 'Intelligence', symbol: '✳', label: 'Workflows with a little more intelligence.', tech: ['LangChain', 'LLM-based processing', 'Sentiment analysis', 'Summarization'], note: 'AI-assisted application workflows, intelligent data handling, and structured response generation.' },
+];
+export default function TechnicalUniverse() {
+  const [selected, setSelected] = useState(0);
+  const cluster = clusters[selected];
+  return <section id="skills" className="chapter skills-chapter"><div className="chapter-label"><span>02 / TECHNICAL UNIVERSE</span><span>CONNECTED BY CURIOSITY</span></div><div className="editorial-heading"><h2>Different tools.<br /><em>One connected vision.</em></h2><p>Explore the technologies behind the interfaces, systems, and intelligent workflows I build.</p></div><div className="skills-layout"><div className="skill-orbit" aria-hidden="true"><div className="skill-ring ring-a" /><div className="skill-ring ring-b" /><span className="skill-core">a.</span>{['React', 'Node.js', 'Python', 'FastAPI', 'LangChain', 'Three.js'].map((name, i) => <span className={`skill-node node-${i}`} key={name}>{name}</span>)}</div><div className="skill-console"><div className="skill-tabs" role="group" aria-label="Technology ecosystems">{clusters.map((item, i) => <button key={item.name} id={`skill-tab-${i}`} aria-pressed={i === selected} aria-controls="skill-panel" onClick={() => setSelected(i)}>{item.name}</button>)}</div><div id="skill-panel" aria-live="polite"><span className="console-symbol">{cluster.symbol}</span><h3>{cluster.label}</h3><p>{cluster.note}</p><div className="tech-tags">{cluster.tech.map(tech => <span key={tech}>{tech}</span>)}</div><div className="console-status"><i /> EXPLORE · BUILD · ITERATE</div></div></div></div></section>;
+}

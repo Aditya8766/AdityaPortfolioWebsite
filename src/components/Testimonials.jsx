@@ -3,7 +3,7 @@ import { Alert, Avatar, Box, Button, Card, CircularProgress, Container, Dialog, 
 import CloseIcon from "@mui/icons-material/Close";
 import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
 import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
-import { fetchReviews, submitReview } from "../lib/testimonials";
+import { fetchReviews, prepareReview, readReviewDraft } from "../lib/staticTestimonials";
 
 const initialForm = { client_name: "", company_role: "", rating: 0, message: "" };
 const glass = {
@@ -19,11 +19,12 @@ export default function Testimonials() {
   const [hasMore, setHasMore] = useState(false);
   const [reload, setReload] = useState(0);
   const [open, setOpen] = useState(false);
-  const [form, setForm] = useState(initialForm);
+  const [form, setForm] = useState(() => readReviewDraft() || initialForm);
   const [errors, setErrors] = useState({});
   const [sending, setSending] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [reviewLink, setReviewLink] = useState("");
   const inFlight = useRef(false);
   const visibleLimit = useRef(12);
 
@@ -76,9 +77,9 @@ export default function Testimonials() {
     if (Object.keys(next).length) return;
     inFlight.current = true; setSending(true); setSubmitError("");
     try {
-      await submitReview(cleaned);
-      setSuccess(true); setForm(initialForm);
-      setReload((value) => value + 1);
+      const link = prepareReview(cleaned);
+      setReviewLink(link);
+      setSuccess(true);
     } catch (error) { setSubmitError(error.name === "TimeoutError" ? "The request timed out. Please try again shortly." : error.message); }
     finally { inFlight.current = false; setSending(false); }
   }
@@ -104,14 +105,14 @@ export default function Testimonials() {
       {hasMore && <Box sx={{ textAlign: "center", mt: 3 }}><Button onClick={loadMore} disabled={loading}>Load more reviews</Button></Box>}
       <Dialog open={open} onClose={close} fullWidth maxWidth="sm" aria-labelledby="review-dialog-title" slotProps={{ paper: { sx: { bgcolor: "#101b29", backgroundImage: "none", border: "1px solid #00e5ff30", borderRadius: 4 } } }}>
         <DialogTitle id="review-dialog-title" sx={{ pr: 7 }}>Share your experience<IconButton aria-label="Close review form" disabled={sending} onClick={close} sx={{ position: "absolute", top: 12, right: 12 }}><CloseIcon /></IconButton></DialogTitle>
-        {success ? <><DialogContent><Alert severity="success" role="status">Thank you! Your review has been published and is visible to all visitors.</Alert></DialogContent><DialogActions><Button onClick={close}>Done</Button></DialogActions></> : <Box component="form" onSubmit={handleSubmit} noValidate>
+        {success ? <><DialogContent><Alert severity="info" role="status">Your review is ready to send. It has not been published. Send it to Aditya on WhatsApp for approval and publication.</Alert><Button href={reviewLink} target="_blank" rel="noopener noreferrer" variant="contained" sx={{ mt: 3 }}>Send review on WhatsApp</Button></DialogContent><DialogActions><Button onClick={() => setSuccess(false)}>Edit review</Button><Button onClick={close}>Done</Button></DialogActions></> : <Box component="form" onSubmit={handleSubmit} noValidate>
           <DialogContent><Stack spacing={2.5}>
-            <Typography variant="body2" color="text.secondary">Your name, company / role, rating, and review will be published on this website. Please avoid sharing private information.</Typography>
+            <Typography variant="body2" color="text.secondary">Send your review to Aditya on WhatsApp. Approved reviews are added to this website and become visible to everyone after publication. Your draft is stored only on this device. Please avoid sharing private information.</Typography>
             {submitError && <Alert severity="error">{submitError}</Alert>}
             {[['client_name', 'Client name', 80], ['company_role', 'Company / role', 120], ['message', 'Your review', 2000]].map(([name, label, maxLength]) => <TextField key={name} name={name} label={label} required fullWidth autoFocus={name === 'client_name'} disabled={sending} value={form[name]} onChange={(event) => setForm((previous) => ({ ...previous, [name]: event.target.value }))} error={Boolean(errors[name])} helperText={errors[name] || (name === 'message' ? `${form.message.length}/2000 · Minimum 20 characters` : undefined)} multiline={name === 'message'} minRows={name === 'message' ? 4 : undefined} slotProps={{ htmlInput: { maxLength } }} />)}
             <Box><Typography id="review-rating-label" component="p" sx={{ mb: 1 }}>Star rating *</Typography><Rating name="review-rating" value={form.rating} onChange={(_, value) => setForm((previous) => ({ ...previous, rating: value || 0 }))} disabled={sending} size="large" aria-labelledby="review-rating-label" />{errors.rating && <Typography color="error" variant="caption" display="block" role="alert">{errors.rating}</Typography>}</Box>
           </Stack></DialogContent>
-          <DialogActions sx={{ px: 3, pb: 3, flexWrap: "wrap", gap: 1 }}><Button disabled={sending} onClick={close}>Cancel</Button><Button type="submit" variant="contained" disabled={sending} startIcon={sending ? <CircularProgress size={16} color="inherit" /> : null}>{sending ? "Saving…" : "Publish review"}</Button></DialogActions>
+          <DialogActions sx={{ px: 3, pb: 3, flexWrap: "wrap", gap: 1 }}><Button disabled={sending} onClick={close}>Cancel</Button><Button type="submit" variant="contained" disabled={sending} startIcon={sending ? <CircularProgress size={16} color="inherit" /> : null}>{sending ? "Preparing…" : "Prepare review"}</Button></DialogActions>
         </Box>}
       </Dialog>
     </Container>

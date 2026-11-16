@@ -1,5 +1,6 @@
 import { Box, Typography, Button, IconButton } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import CurrentYear from './CurrentYear';
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { useTheme } from "@mui/material/styles";
@@ -72,10 +73,10 @@ export default function Footer() {
         textAlign: "center"
       }}>
         <Box component="span" sx={{ display: { xs: "inline", md: "none" } }}>
-          © 2026 Aditya
+          © <CurrentYear /> Aditya
         </Box>
         <Box component="span" sx={{ display: { xs: "none", md: "inline" } }}>
-          © 2026 Aditya. All rights reserved.
+          © <CurrentYear /> Aditya. All rights reserved.
         </Box>
       </Typography>
       

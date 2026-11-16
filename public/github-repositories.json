@@ -1,0 +1,570 @@
+﻿[
+    {
+        "name":  "mex",
+        "description":  "Team memory for engineers and their AI agents. Lives in your repo. Shared through Git.",
+        "html_url":  "https://github.com/Aditya8766/mex",
+        "homepage":  "https://mexmemory.com",
+        "language":  null,
+        "fork":  true
+    },
+    {
+        "name":  "AdityaPortfolioWebsite",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/AdityaPortfolioWebsite",
+        "homepage":  "https://aditya-portfolio-website-five.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "Kalpit",
+        "description":  "Learning and playing with solar system",
+        "html_url":  "https://github.com/Aditya8766/Kalpit",
+        "homepage":  "https://kalpit-universe.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "ParshwaDryFruitEcommerce",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ParshwaDryFruitEcommerce",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "AI_Engineer_Practice",
+        "description":  "Practicing ai ml dl rag genai",
+        "html_url":  "https://github.com/Aditya8766/AI_Engineer_Practice",
+        "homepage":  null,
+        "language":  "Jupyter Notebook",
+        "fork":  false
+    },
+    {
+        "name":  "ProsoftUpdatedWebsite",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ProsoftUpdatedWebsite",
+        "homepage":  "https://prosoft-updated-website.vercel.app",
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "StesCalculatorApp",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/StesCalculatorApp",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "pythonProsoftbackend",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/pythonProsoftbackend",
+        "homepage":  null,
+        "language":  "Python",
+        "fork":  false
+    },
+    {
+        "name":  "ProsoftVuePython",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ProsoftVuePython",
+        "homepage":  null,
+        "language":  "Vue",
+        "fork":  false
+    },
+    {
+        "name":  "DevCodeIDEClient",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/DevCodeIDEClient",
+        "homepage":  "https://dev-code-ide-client.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "DevCodeIDEServer",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/DevCodeIDEServer",
+        "homepage":  "https://dev-code-ide-server.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "CMT_WirelessClientSide",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/CMT_WirelessClientSide",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "HappyBidsClient",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/HappyBidsClient",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "SpaceShooterGame",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/SpaceShooterGame",
+        "homepage":  "https://space-shooter-game-pi.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "HappyBidsAdminWebPage",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/HappyBidsAdminWebPage",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "BiddoBackendService",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/BiddoBackendService",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "vibeTrip",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/vibeTrip",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "VrVlogsPortfolio",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/VrVlogsPortfolio",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "ExpressBasicPractices",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ExpressBasicPractices",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "MovieHeiest",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/MovieHeiest",
+        "homepage":  null,
+        "language":  null,
+        "fork":  false
+    },
+    {
+        "name":  "movie-search-filter-react",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/movie-search-filter-react",
+        "homepage":  "https://movie-search-filter-react.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "codeRoutesCompaneyWebsite",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/codeRoutesCompaneyWebsite",
+        "homepage":  null,
+        "language":  null,
+        "fork":  false
+    },
+    {
+        "name":  "AdityaPortfolio",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/AdityaPortfolio",
+        "homepage":  "https://aditya-portfolio-rouge.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "business-chat-model",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/business-chat-model",
+        "homepage":  "https://business-chat-model.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "business-chat-model-server",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/business-chat-model-server",
+        "homepage":  "https://business-chat-model-server.vercel.app",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "code-optimization-practice",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/code-optimization-practice",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "ReactInsideHTMLFile",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ReactInsideHTMLFile",
+        "homepage":  null,
+        "language":  "HTML",
+        "fork":  false
+    },
+    {
+        "name":  "Node-Practice",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/Node-Practice",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "HealthCare-Assignment",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/HealthCare-Assignment",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "business-whatsapp-client-module",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/business-whatsapp-client-module",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "whatsapp-business-server-module",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/whatsapp-business-server-module",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "Aditya8766",
+        "description":  "Live URL For PORTFOLIO:- https://main--famous-puppy-dd5231.netlify.app/",
+        "html_url":  "https://github.com/Aditya8766/Aditya8766",
+        "homepage":  "",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "whatsapp-buisiness",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/whatsapp-buisiness",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "whatsapp-business-server",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/whatsapp-business-server",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "MoneyManagerWebApp",
+        "description":  "This is basic money manager web app who takes care of basic management of money and store records",
+        "html_url":  "https://github.com/Aditya8766/MoneyManagerWebApp",
+        "homepage":  "https://main--aditya-money-manager-web-app.netlify.app/",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "coachingManagement",
+        "description":  "Here is Deployed version of this project",
+        "html_url":  "https://github.com/Aditya8766/coachingManagement",
+        "homepage":  "https://main--coachingclassmanagementsystem.netlify.app/",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "CoachingManagementServer",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/CoachingManagementServer",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "clothing-store-angular",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/clothing-store-angular",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "CoachingClassManagementServer",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/CoachingClassManagementServer",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "CoachingClassMAnagement",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/CoachingClassMAnagement",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "pmsClient",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/pmsClient",
+        "homepage":  null,
+        "language":  "CSS",
+        "fork":  false
+    },
+    {
+        "name":  "ChatRooms",
+        "description":  "Client side Code for Live Chat Rooms App with Socket.io",
+        "html_url":  "https://github.com/Aditya8766/ChatRooms",
+        "homepage":  "https://chat-rooms-puce.vercel.app",
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "NewsApp",
+        "description":  "Created News App Using React native",
+        "html_url":  "https://github.com/Aditya8766/NewsApp",
+        "homepage":  "",
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "DocumentAnalyzer",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/DocumentAnalyzer",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "ChatRoomsBackendServer",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ChatRoomsBackendServer",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "Byndele-react-native-app",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/Byndele-react-native-app",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "portfolio",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/portfolio",
+        "homepage":  null,
+        "language":  null,
+        "fork":  false
+    },
+    {
+        "name":  "MobileAppBackendOtp",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/MobileAppBackendOtp",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "material-ui",
+        "description":  "This assignment is for practice only all things that we use in industry i had updated in this repo you can check it out. This is not only about material-ui it includes all practice material",
+        "html_url":  "https://github.com/Aditya8766/material-ui",
+        "homepage":  "",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "PraiseArrayNextApp",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/PraiseArrayNextApp",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "TrainingAssignments",
+        "description":  "Added Assignment For Practice of HTML And CSS all necessary topics are covered",
+        "html_url":  "https://github.com/Aditya8766/TrainingAssignments",
+        "homepage":  "",
+        "language":  "HTML",
+        "fork":  false
+    },
+    {
+        "name":  "bitbucketeditor",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/bitbucketeditor",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "School-ManagementSystem",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/School-ManagementSystem",
+        "homepage":  null,
+        "language":  "CSS",
+        "fork":  false
+    },
+    {
+        "name":  "react-graphql-backend-frontend",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/react-graphql-backend-frontend",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "ReactNativeCourceFromMetaAssisment",
+        "description":  "This is assisment provided by cource react native basics by meta developers",
+        "html_url":  "https://github.com/Aditya8766/ReactNativeCourceFromMetaAssisment",
+        "homepage":  "",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "ReactUseFormHookPractice",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ReactUseFormHookPractice",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "angular-dataFetchingApi-prctices",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/angular-dataFetchingApi-prctices",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "referAppReactNative",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/referAppReactNative",
+        "homepage":  null,
+        "language":  null,
+        "fork":  false
+    },
+    {
+        "name":  "billing-system-inC",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/billing-system-inC",
+        "homepage":  null,
+        "language":  "C",
+        "fork":  false
+    },
+    {
+        "name":  "react_cart",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/react_cart",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "React_BIg_Calender",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/React_BIg_Calender",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "ReactNativeAppDevelpment",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ReactNativeAppDevelpment",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "React-portfolio",
+        "description":  "Deployment on github-pages",
+        "html_url":  "https://github.com/Aditya8766/React-portfolio",
+        "homepage":  "",
+        "language":  "HTML",
+        "fork":  false
+    },
+    {
+        "name":  "NestJs-CRUD",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/NestJs-CRUD",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "TypeScript",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/TypeScript",
+        "homepage":  null,
+        "language":  "TypeScript",
+        "fork":  false
+    },
+    {
+        "name":  "onllineRentalSystem",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/onllineRentalSystem",
+        "homepage":  null,
+        "language":  "HTML",
+        "fork":  false
+    },
+    {
+        "name":  "modals",
+        "description":  "this is the repo with modals and react intl multiple language feature practice",
+        "html_url":  "https://github.com/Aditya8766/modals",
+        "homepage":  "",
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "ExpressWithMangoDB",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/ExpressWithMangoDB",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "productsTable",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/productsTable",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "Simpe-components-in-react",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/Simpe-components-in-react",
+        "homepage":  null,
+        "language":  "JavaScript",
+        "fork":  false
+    },
+    {
+        "name":  "Aditya",
+        "description":  null,
+        "html_url":  "https://github.com/Aditya8766/Aditya",
+        "homepage":  null,
+        "language":  "HTML",
+        "fork":  false
+    }
+]

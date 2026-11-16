@@ -3,11 +3,12 @@ import { createTheme } from "@mui/material/styles";
 export const theme = createTheme({
   palette: {
     mode: "dark",
-    primary: { main: "#00e5ff" },
-    secondary: { main: "#ff4081" },
-    background: { default: "transparent" }
+    primary: { main: "#c8ef8c" },
+    secondary: { main: "#aabfa1" },
+    background: { default: "#0b1012", paper: "#111a15" }
   },
   typography: {
+    fontFamily: "Inter, sans-serif",
     h2: { fontWeight: 800 },
     h4: { fontWeight: 700 }
   },
