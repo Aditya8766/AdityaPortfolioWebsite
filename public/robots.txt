@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aditya-portfolio-website-five.vercel.app/sitemap.xml
