@@ -11,7 +11,10 @@ import TourNavigation from './components/TourNavigation';
 import ProjectLab from './components/ProjectLab';
 import TechnicalUniverse from './components/TechnicalUniverse';
 import './universe.css';
+import './motion.css';
+import './components/logo.css';
 import Testimonials from './components/Testimonials';
+import ProofOfWork from './components/ProofOfWork';
 export default function App() {
   const [motionEnabled, setMotionEnabled] = useState(() => !window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   useEffect(() => {
@@ -28,6 +31,12 @@ export default function App() {
     document.querySelectorAll('.chapter').forEach(node => observer.observe(node));
     return () => observer.disconnect();
   }, [motionEnabled]);
+  const isProofRoute = window.location.pathname.replace(/\/$/, '') === '/proof-of-work';
+  if (isProofRoute) return <MotionConfig reducedMotion={motionEnabled ? 'user' : 'always'}><div className="universe-app">
+    <a className="skip-link" href="#main">Skip to content</a><DynamicFavicon />
+    <TourNavigation motionEnabled={motionEnabled} setMotionEnabled={setMotionEnabled} />
+    <main id="main"><ProofOfWork /></main><Footer />
+  </div></MotionConfig>;
   return <MotionConfig reducedMotion={motionEnabled ? 'user' : 'always'}><div className="universe-app">
     <a className="skip-link" href="#main">Skip to content</a><DynamicFavicon />
     <TourNavigation motionEnabled={motionEnabled} setMotionEnabled={setMotionEnabled} />

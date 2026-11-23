@@ -1,0 +1,4 @@
+.brand-symbol{width:38px;height:38px;display:grid;place-items:center;border:1px solid #c8ef8c66;border-radius:10px;position:relative;font-size:0;letter-spacing:0;background:linear-gradient(145deg,#1b2a1d,#0e1510);box-shadow:inset 0 0 0 4px #c8ef8c08,0 8px 25px #0004}
+.brand-symbol:before{content:'A';font:600 19px/1 Inter,sans-serif;letter-spacing:-1px;color:#dff3cc;transform:translateY(-1px)}
+.brand-symbol:after{content:'';position:absolute;width:7px;height:2px;right:7px;bottom:7px;background:var(--accent);border-radius:2px;transform:rotate(-35deg)}
+.brand-symbol span{display:none}

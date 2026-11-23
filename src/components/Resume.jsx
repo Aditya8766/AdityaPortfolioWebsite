@@ -93,6 +93,16 @@ export default function Resume() {
             >
              Developed scalable React.js modules, integrated backend APIs, and contributed to AI-assisted features involving LLM-based data processing and intelligent workflow integration.
             </Typography>
+            <Typography
+              sx={{
+                color: "rgba(255,255,255,0.8)",
+                lineHeight: 1.6,
+                fontSize: { xs: "0.9rem", md: "1rem" },
+                mt: 2
+              }}
+            >
+              Selected product work includes the released A2Z List App and a confidential Feedback Management system for structured user feedback workflows.
+            </Typography>
           </Box>
         </Box>
 

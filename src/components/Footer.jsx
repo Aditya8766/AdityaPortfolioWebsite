@@ -6,10 +6,10 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 import { useTheme } from "@mui/material/styles";
 
 const navItems = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
+  { label: "Proof of Work", href: "/proof-of-work" },
   { label: "Contact", href: "#contact" }
 ];
 
@@ -21,6 +21,7 @@ const socialLinks = [
 
 export default function Footer() {
   const theme = useTheme();
+  const isProofRoute = window.location.pathname.replace(/\/$/, '') === '/proof-of-work';
 
   return (
     <Box 
@@ -49,7 +50,7 @@ export default function Footer() {
         {navItems.map((item) => (
           <Button
             key={item.label}
-            href={item.href}
+            href={isProofRoute && item.href.startsWith('#') ? `/${item.href}` : item.href}
             sx={{
               color: "white",
               fontSize: { xs: 12, md: 14 },
